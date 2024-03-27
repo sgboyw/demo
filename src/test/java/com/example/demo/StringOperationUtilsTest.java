@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,13 @@ class StringOperationUtilsTest {
         input = "aaa";
         output = StringOperationUtils.remove3TimesRepeatedCharFromString(input);
         assertEquals("", output);
+
+        input = "test123";
+        try {
+            output = StringOperationUtils.remove3TimesRepeatedCharFromString(input);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().contains("contains non lowercase letters"));
+        }
     }
 
     @Test
@@ -58,5 +66,12 @@ class StringOperationUtilsTest {
         input = "bbb";
         output = StringOperationUtils.replace3TimesRepeatedCharByPrevCharFromString(input);
         assertEquals("a", output);
+
+        input = "test123";
+        try {
+            output = StringOperationUtils.remove3TimesRepeatedCharFromString(input);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().contains("contains non lowercase letters"));
+        }
     }
 }
